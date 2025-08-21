@@ -6,7 +6,7 @@
 # Optional: directx-headers glslang libclc libunwind libva libvdpau lm_sensors lua python3-ply rust-bindgen spirv-llvm-translator vulkan-loader wayland-protocols
 
 name=mesa
-version=25.1.8
+version=25.2.1
 release=1
 source=(https://archive.mesa3d.org/$name-$version.tar.xz)
 
@@ -41,8 +41,6 @@ build() {
         -D gles1=disabled \
         -D gles2=enabled \
         -D glx=dri \
-        -D osmesa=true \
-        -D gallium-xa=disabled \
         -D gallium-drivers=${PKGMK_MESA_GALLIUM}etnaviv,lima,svga,v3d,vc4,freedreno,llvmpipe,nouveau,tegra \
         -D platforms=${PKGMK_MESA_PLATFORMS#,} \
         -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc \
