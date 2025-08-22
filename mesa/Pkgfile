@@ -12,7 +12,6 @@ source=(https://archive.mesa3d.org/$name-$version.tar.xz)
 
 build() {
     prt-get isinst directx-headers && PKGMK_MESA_GALLIUM+='d3d12,'
-    prt-get isinst libclc spirv-llvm-translator && PKGMK_MESA+=' -D gallium-opencl=icd'
     prt-get isinst libclc rust-bindgen spirv-llvm-translator && PKGMK_MESA+=' -D gallium-rusticl=true'
     prt-get isinst glslang python3-ply && PKGMK_MESA+=' -D vulkan-drivers=auto -D vulkan-layers=device-select,intel-nullhw,overlay' || PKGMK_MESA+=' -D vulkan-drivers='
     prt-get isinst libunwind && PKGMK_MESA+=' -D libunwind=enabled'
