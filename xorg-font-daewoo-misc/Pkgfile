@@ -1,0 +1,21 @@
+# Description: xorg font font-daewoo-misc
+# URL: https://xorg.freedesktop.org
+# Maintainer: CRUX Xorg Team, xorg-ports at crux dot nu
+# Arch Maintainer: CRUX-ARM System Team, devel at crux-arm dot nu
+# Depends on: xorg-bdftopcf xorg-font-util xorg-mkfontscale
+
+name=xorg-font-daewoo-misc
+version=1.0.3
+release=1
+source=(https://www.x.org/releases/individual/font/font-daewoo-misc-$version.tar.bz2)
+
+build() {
+	cd font-daewoo-misc-$version
+
+	./configure --prefix=/usr --build=aarch64-unknown-linux-gnu
+
+	make
+	make DESTDIR=$PKG install
+
+	rm $PKG/usr/share/fonts/X11/misc/fonts.dir
+}
