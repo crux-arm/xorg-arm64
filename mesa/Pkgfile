@@ -6,7 +6,7 @@
 # Optional: cbindgen directx-headers glslang libclc libdisplay-info libunwind libva lm_sensors lua python3-ply rust-bindgen spirv-llvm-translator vulkan-loader wayland-protocols
 
 name=mesa
-version=26.1.8
+version=26.2.1
 release=1
 source=(https://archive.mesa3d.org/$name-$version.tar.xz)
 
@@ -54,7 +54,8 @@ build() {
         -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc \
         -D glvnd=enabled \
         -D vulkan-drivers=$VULKAN_DRIVERS \
-        -D vulkan-layers=$VULKAN_LAYERS
+        -D vulkan-layers=$VULKAN_LAYERS \
+        -D vulkan-icd-dir=/usr/share/vulkan/icd.d
 
     meson compile -C build -j ${JOBS:-1}
     DESTDIR=$PKG meson install -C build
